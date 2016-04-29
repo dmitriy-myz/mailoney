@@ -310,7 +310,7 @@ def module():
         honeypot = SchizoOpenRelay((mailoney.bind_ip, mailoney.bind_port), None)
         print '[*] Mail Relay listening on {}:{}'.format(mailoney.bind_ip, mailoney.bind_port)
         try:
-            asyncore.loop()
+            asyncore.loop(timeout=10,use_poll=True)
             print "exiting for some unknown reason"
         except KeyboardInterrupt:
             print 'Detected interruption, terminating...'
